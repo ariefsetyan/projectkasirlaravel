@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\{{modelName}};
+use DataTables;
+
+class {{modelName}}Controller extends Controller
+{
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = {{modelName}}::select('*');
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+
+                    $btn = "<a href='".url('{{modelNameSingular}}/show',$row->{{id}})."' class='edit btn btn-info btn-sm'>View</a>
+                    <a href='".url('{{modelNameSingular}}/edit',$row->{{id}})."' class='edit btn btn-primary btn-sm'>Edit</a>
+                    <a href='".url('{{modelNameSingular}}/destroy',$row->{{id}})."' class='edit btn btn-primary btn-sm'>Delete</a>
+                   ";
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('{{modelName}}.index');
+        //${{modelNameSingular}} = {{modelName}}::all();
+        //return view('{{modelName}}.index',compact('{{modelNameSingular}}'));
+       }
+
+    public function create()
+    {
+        return view('{{modelNameSingular}}.form');
+    }
+
+    public function store(Request $request)
+        {
+            ${{modelNameSingular}} = {{modelName}}::create($request->all());
+            return redirect('{{modelNameSingular}}/index');
+        }
+
+    public function show($id)
+    {
+        ${{modelNameSingular}} = {{modelName}}::findOrFail($id);
+
+        return view('{{modelName}}.show', compact('{{modelNameSingular}}'));
+    }
+
+    public function edit($id)
+    {
+        ${{modelNameSingular}} = {{modelName}}::findOrFail($id);
+
+        return view('{{modelNameSingular}}.edit', compact('{{modelNameSingular}}'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        ${{modelNameSingular}} = {{modelName}}::find($id);
+
+        ${{modelNameSingular}}->update($request->all());
+
+        return view('{{modelNameSingular}}.index');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        ${{modelNameSingular}} = {{modelName}}::find($id);
+        if(!${{modelNameSingular}}){
+            return response()->json([
+                'code' => 200,
+                'status' => false,
+                'message' => "Failed"
+            ], 200);
+        }
+        {{modelName}}::destroy($id);
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success"
+        ], 200);
+    }
+}
