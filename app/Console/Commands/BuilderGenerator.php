@@ -236,7 +236,7 @@ class BuilderGenerator extends Command
         //create api route
         File::append(
             base_path('routes/web.php'),
-            "Route::get('" . str::plural(strtolower($name)) . "/index', [App\Http\Controllers\\" . $name . "Controller::class, 'index'])->name('".strtolower($name).".index');
+            "Route::get('" . str::plural(strtolower($name)) . "', [App\Http\Controllers\\" . $name . "Controller::class, 'index'])->name('".strtolower($name).".index');
             Route::get('" . str::plural(strtolower($name)) . "/create', [App\Http\Controllers\\" . $name . "Controller::class, 'create'])->name('".strtolower($name).".create');
             Route::post('" . str::plural(strtolower($name)) . "/store', [App\Http\Controllers\\" . $name . "Controller::class, 'store'])->name('".strtolower($name).".store');
             Route::get('" . str::plural(strtolower($name)) . "/show/{id}', [App\Http\Controllers\\" . $name . "Controller::class, 'show'])->name('".strtolower($name).".show');

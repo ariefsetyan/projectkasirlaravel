@@ -23,8 +23,8 @@ class {{modelName}}Controller extends Controller
                 ->addColumn('action', function ($row) {
 
                     $btn = "<a href='".url('{{modelNameSingular}}/show',$row->{{id}})."' class='edit btn btn-info btn-sm'>View</a>
-                    <a href='".url('{{modelNameSingular}}/edit',$row->{{id}})."' class='edit btn btn-primary btn-sm'>Edit</a>
-                    <a href='".url('{{modelNameSingular}}/destroy',$row->{{id}})."' class='edit btn btn-primary btn-sm'>Delete</a>
+                    <a href='".url('{{modelNameSingular}}/edit',$row->{{id}})."' class='edit btn btn-warning btn-sm'>Edit</a>
+                    <a href='".url('{{modelNameSingular}}/destroy',$row->{{id}})."' class='edit btn btn-danger btn-sm'>Delete</a>
                    ";
 
                     return $btn;

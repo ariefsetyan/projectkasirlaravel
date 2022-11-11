@@ -33,7 +33,7 @@ Route::post('/builder/create', [App\Http\Controllers\BuilderController::class, '
 //
 //
 
-Route::get('products/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
             Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
             Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
             Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
@@ -48,6 +48,48 @@ Route::get('products/index', [App\Http\Controllers\ProductsController::class, 'i
             Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
             Route::get('products/delete/{id}', [App\Http\Controllers\ProductsController::class, 'delete'])->name('products.delete');
       Route::get('products/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+      Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+      Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+      Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+      Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
+      Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
             Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
             Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
             Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');

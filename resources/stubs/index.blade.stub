@@ -42,6 +42,7 @@
                     <table id="{{modelNameSingular}}" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 {{header}}
                                 <th width="280px">Action</th>
                             </tr>
@@ -66,6 +67,11 @@
             serverSide: true,
             ajax: "{{ route('{{modelNameSingular}}.index') }}",
             columns: [
+                {
+                    "data": 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
                 {{tbody}}
                 {
                     data: 'action',
@@ -75,7 +81,6 @@
                 },
             ]
         });
-
     });
 
     $(document).on("click",".delete",function (e){

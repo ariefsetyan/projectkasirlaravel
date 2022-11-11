@@ -23,8 +23,8 @@ class ProductsController extends Controller
                 ->addColumn('action', function ($row) {
 
                     $btn = "<a href='".url('products/show',$row->id)."' class='edit btn btn-info btn-sm'>View</a>
-                    <a href='".url('products/edit',$row->id)."' class='edit btn btn-primary btn-sm'>Edit</a>
-                    <a href='".url('products/destroy',$row->id)."' class='edit btn btn-primary btn-sm'>Delete</a>
+                    <a href='".url('products/edit',$row->id)."' class='edit btn btn-warning btn-sm'>Edit</a>
+                    <a href='".url('products/destroy',$row->id)."' class='edit btn btn-danger btn-sm'>Delete</a>
                    ";
 
                     return $btn;
