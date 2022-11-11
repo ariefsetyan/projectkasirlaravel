@@ -9,23 +9,14 @@
     <section class="content">
 
         <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">FORM Products</h3>
 
-                <div class="box-tools pull-right">
-
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">FORM Products</h3>
                 </div>
-            </div>
-            <div class="box-body">
-                <div class="col-md-6">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Quick Example</h3>
-                        </div>
-                        {!! Form::open(['url' => 'products/update/'.$products->id,'method' => 'post']) !!}
-                        <div class="box-body">
-
-                            <div class='form-group'>
+                {!! Form::open(['url' => 'products/update/'.$products->id,'method' => 'post']) !!}
+                <div class="box-body">
+                    <div class='form-group'>
                         {!! Form::label('id'); !!}
                         {{ Form::text('id',$products->id, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
                      </div>
@@ -45,20 +36,14 @@
                         {!! Form::label('updated_at'); !!}
                         {{ Form::text('updated_at',$products->updated_at, array_merge(['class' => 'form-control','placeholder'=>'updated_at'])) }}
                      </div>
-
-                        </div>
-                        <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">SIMPAN</button>
-                        </div>
-                        {!! Form::close() !!}
-
-                    </div>
                 </div>
+
             </div>
+
             <div class="box-footer">
-                Footer
+                <a href="{{route('products.index')}}" type="button" class="btn btn-default">Cencel</a>
+                <button type="submit" class="btn btn-primary pull-right">Simpan</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </section>
