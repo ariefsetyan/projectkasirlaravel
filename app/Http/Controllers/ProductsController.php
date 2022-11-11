@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Products;
 use DataTables;
+Use Alert;
 
 class ProductsController extends Controller
 {
     public function index(Request $request)
     {
+        if(session("success_message")){
+            Alert::success('Success', 'Data Berhasil Disimpan');
+        }
         if ($request->ajax()) {
             $data = Products::select('*');
 
@@ -29,8 +33,6 @@ class ProductsController extends Controller
                 ->make(true);
         }
         return view('Products.index');
-        //$products = Products::all();
-        //return view('Products.index',compact('products'));
        }
 
     public function create()
@@ -41,7 +43,7 @@ class ProductsController extends Controller
     public function store(Request $request)
         {
             $products = Products::create($request->all());
-            return redirect('products/index');
+            return redirect('products/index')->withSuccessMessage('success_message');
         }
 
     public function show($id)
@@ -64,25 +66,15 @@ class ProductsController extends Controller
 
         $products->update($request->all());
 
-        return view('products.index');
+        return redirect('products/index')->withSuccessMessage('success_message')->withSuccessMessage('success_message');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $products = Products::find($id);
-        if(!$products){
-            return response()->json([
-                'code' => 200,
-                'status' => false,
-                'message' => "Failed"
-            ], 200);
-        }
+
         Products::destroy($id);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success"
-        ], 200);
+        return back()->withSuccessMessage('success_message');
     }
 }

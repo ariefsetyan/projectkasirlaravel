@@ -59,9 +59,8 @@
 </section>
 @endsection
 @push('scriptdown')
-    <script type="text/javascript">
-$(function() {
-
+<script type="text/javascript">
+    $(function() {
         var table = $('#products').DataTable({
             processing: true,
             serverSide: true,
@@ -78,5 +77,22 @@ $(function() {
         });
 
     });
-    </script>
+
+    $(document).on("click",".delete",function (e){
+
+        if (confirm('yakin data akan di hapus?')) {
+            let id = $(this).val();
+            $.ajax(
+                {
+                    url: "{{ url('products/destroy') }}/"+id,
+                    type: 'GET',
+                    success: function (){
+                        location.reload();
+                    }
+                });
+        } else {
+            return true
+        }
+    })
+</script>
 @endpush

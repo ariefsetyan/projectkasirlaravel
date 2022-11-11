@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\{{modelName}};
 use DataTables;
+Use Alert;
 
 class {{modelName}}Controller extends Controller
 {
     public function index(Request $request)
     {
+        if(session("success_message")){
+            Alert::success('Success', 'Data Berhasil Disimpan');
+        }
         if ($request->ajax()) {
             $data = {{modelName}}::select('*');
 
@@ -29,8 +33,6 @@ class {{modelName}}Controller extends Controller
                 ->make(true);
         }
         return view('{{modelName}}.index');
-        //${{modelNameSingular}} = {{modelName}}::all();
-        //return view('{{modelName}}.index',compact('{{modelNameSingular}}'));
        }
 
     public function create()
@@ -41,7 +43,7 @@ class {{modelName}}Controller extends Controller
     public function store(Request $request)
         {
             ${{modelNameSingular}} = {{modelName}}::create($request->all());
-            return redirect('{{modelNameSingular}}/index');
+            return redirect('{{modelNameSingular}}/index')->withSuccessMessage('success_message');
         }
 
     public function show($id)
@@ -64,25 +66,15 @@ class {{modelName}}Controller extends Controller
 
         ${{modelNameSingular}}->update($request->all());
 
-        return view('{{modelNameSingular}}.index');
+        return redirect('{{modelNameSingular}}/index')->withSuccessMessage('success_message')->withSuccessMessage('success_message');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         ${{modelNameSingular}} = {{modelName}}::find($id);
-        if(!${{modelNameSingular}}){
-            return response()->json([
-                'code' => 200,
-                'status' => false,
-                'message' => "Failed"
-            ], 200);
-        }
+
         {{modelName}}::destroy($id);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success"
-        ], 200);
+        return back()->withSuccessMessage('success_message');
     }
 }
