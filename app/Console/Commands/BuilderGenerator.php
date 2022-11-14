@@ -191,9 +191,9 @@ class BuilderGenerator extends Command
             $body[] = '<td>{{$data->' . $data->COLUMN_NAME . '}}</td>';
             $column[] = "{data:'$data->COLUMN_NAME',name:'$data->COLUMN_NAME'},";
         }
-        $tab_heder = implode(" ", $header);
+        $tab_heder = implode("\n", $header);
         $tab_body = implode(" ", $body);
-        $col = implode(" ", $column);
+        $col = implode("\n", $column);
         $viewTemplate = str_replace(
             [
                 '{{modelName}}',
