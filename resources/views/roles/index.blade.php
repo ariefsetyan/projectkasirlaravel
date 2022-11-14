@@ -1,92 +1,56 @@
 @extends('layouts.app')
 
-@push('styles')
-
-@endpush
-@push('script')
-
-@endpush
 
 @section('content')
-
-<section class="content">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <div class="pull-left">
-                        <h3 class="box-title">Daftar Roles</h3>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-success" href="{{ url('roles/create') }}"> ADD</a>
-                    </div>
-                </div>
-
-                <div class="box-body">
-                    @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                    @endif
-                    <table id="roles" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>id</th> <th>name</th> <th>guard_name</th> <th>created_at</th> <th>updated_at</th>
-                                <th width="280px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-
-
-                </div>
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Role Management</h2>
+            </div>
+            <div class="pull-right">
+                @can('role-create')
+                    <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+                @endcan
             </div>
         </div>
     </div>
-</section>
+
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th width="280px">Action</th>
+        </tr>
+        @foreach ($roles as $key => $role)
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{ $role->name }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
+                    @can('role-edit')
+                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                    @endcan
+                    @can('role-delete')
+                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                    @endcan
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+
+    {!! $roles->render() !!}
+
+
+    <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection
-@push('scriptdown')
-<script type="text/javascript">
-    $(function() {
-        var table = $('#roles').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('roles.index') }}",
-            columns: [
-                {
-                    "data": 'DT_RowIndex',
-                    orderable: false,
-                    searchable: false
-                },
-                {data:'id',name:'id'}, {data:'name',name:'name'}, {data:'guard_name',name:'guard_name'}, {data:'created_at',name:'created_at'}, {data:'updated_at',name:'updated_at'},
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false
-                },
-            ]
-        });
-    });
-
-    $(document).on("click",".delete",function (e){
-
-        if (confirm('yakin data akan di hapus?')) {
-            let id = $(this).val();
-            $.ajax(
-                {
-                    url: "{{ url('roles/destroy') }}/"+id,
-                    type: 'GET',
-                    success: function (){
-                        location.reload();
-                    }
-                });
-        } else {
-            return true
-        }
-    })
-</script>
-@endpush

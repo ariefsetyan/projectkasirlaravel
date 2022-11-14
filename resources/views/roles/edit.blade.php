@@ -1,55 +1,56 @@
 @extends('layouts.app')
-@push('styles')
 
-@endpush
-@push('script')
 
-@endpush
 @section('content')
-    <section class="content">
-
-        <div class="box">
-
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">FORM Roles</h3>
-                </div>
-                {!! Form::open(['url' => 'roles/update/'.$roles->id,'method' => 'post']) !!}
-                <div class="box-body">
-                    <div class='form-group'>
-                        {!! Form::label('id'); !!}
-                        {{ Form::text('id',$roles->id, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('name'); !!}
-                        {{ Form::text('name',$roles->name, array_merge(['class' => 'form-control','placeholder'=>'name'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('guard_name'); !!}
-                        {{ Form::text('guard_name',$roles->guard_name, array_merge(['class' => 'form-control','placeholder'=>'guard_name'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('created_at'); !!}
-                        {{ Form::text('created_at',$roles->created_at, array_merge(['class' => 'form-control','placeholder'=>'created_at'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('updated_at'); !!}
-                        {{ Form::text('updated_at',$roles->updated_at, array_merge(['class' => 'form-control','placeholder'=>'updated_at'])) }}
-                     </div>
-                </div>
-
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Edit Role</h2>
             </div>
-
-            <div class="box-footer">
-                <a href="{{route('roles.index')}}" type="button" class="btn btn-default">Cencel</a>
-                <button type="submit" class="btn btn-primary pull-right">Simpan</button>
-                {!! Form::close() !!}
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
             </div>
         </div>
-    </section>
-@endsection
-@push('scriptdown')
-    <script>
+    </div>
 
-    </script>
-@endpush
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Name:</strong>
+                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Permission:</strong>
+                <br/>
+                @foreach($permission as $value)
+                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                        {{ $value->name }}</label>
+                    <br/>
+                @endforeach
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    {!! Form::close() !!}
+
+
+@endsection
+<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
