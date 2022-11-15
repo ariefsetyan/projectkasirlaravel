@@ -13,7 +13,7 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         if(session("success_message")){
-            Alert::success('Success', 'Data Berhasil Disimpan');
+            toast('Success','success simpan');
         }
         if ($request->ajax()) {
             $data = Products::select('*');
@@ -43,7 +43,7 @@ class ProductsController extends Controller
     public function store(Request $request)
         {
             $products = Products::create($request->all());
-            return redirect('products/index')->withSuccessMessage('success_message');
+            return redirect('products/index')->with('toast_success','message');
         }
 
     public function show($id)
@@ -66,7 +66,7 @@ class ProductsController extends Controller
 
         $products->update($request->all());
 
-        return redirect('products/index')->withSuccessMessage('success_message')->withSuccessMessage('success_message');
+        return redirect('products')->withSuccessMessage('success_message');
     }
 
     public function destroy(Request $request, $id)
@@ -75,6 +75,6 @@ class ProductsController extends Controller
 
         Products::destroy($id);
 
-        return back()->withSuccessMessage('success_message');
+        return back()->with('toast_success','message');
     }
 }

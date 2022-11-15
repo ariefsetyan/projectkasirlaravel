@@ -13,7 +13,7 @@ class {{modelName}}Controller extends Controller
     public function index(Request $request)
     {
         if(session("success_message")){
-            Alert::success('Success', 'Data Berhasil Disimpan');
+            toast('Success','success simpan');
         }
         if ($request->ajax()) {
             $data = {{modelName}}::select('*');
@@ -43,7 +43,7 @@ class {{modelName}}Controller extends Controller
     public function store(Request $request)
         {
             ${{modelNameSingular}} = {{modelName}}::create($request->all());
-            return redirect('{{modelNameSingular}}/index')->withSuccessMessage('success_message');
+            return redirect('{{modelNameSingular}}/index')->with('toast_success','message');
         }
 
     public function show($id)
@@ -66,7 +66,7 @@ class {{modelName}}Controller extends Controller
 
         ${{modelNameSingular}}->update($request->all());
 
-        return redirect('{{modelNameSingular}}/index')->withSuccessMessage('success_message')->withSuccessMessage('success_message');
+        return redirect('{{modelNameSingular}}')->withSuccessMessage('success_message');
     }
 
     public function destroy(Request $request, $id)
@@ -75,6 +75,6 @@ class {{modelName}}Controller extends Controller
 
         {{modelName}}::destroy($id);
 
-        return back()->withSuccessMessage('success_message');
+        return back()->with('toast_success','message');
     }
 }
