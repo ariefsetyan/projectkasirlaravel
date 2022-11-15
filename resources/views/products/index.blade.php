@@ -32,7 +32,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>id</th> <th>name</th> <th>detail</th> <th>created_at</th> <th>updated_at</th>
+                                <th>id</th>
+<th>name</th>
+<th>detail</th>
+<th>created_at</th>
+<th>updated_at</th>
                                 <th width="280px">Action</th>
                             </tr>
                         </thead>
@@ -61,7 +65,11 @@
                     orderable: false,
                     searchable: false
                 },
-                {data:'id',name:'id'}, {data:'name',name:'name'}, {data:'detail',name:'detail'}, {data:'created_at',name:'created_at'}, {data:'updated_at',name:'updated_at'},
+                {data:'id',name:'id'},
+{data:'name',name:'name'},
+{data:'detail',name:'detail'},
+{data:'created_at',name:'created_at'},
+{data:'updated_at',name:'updated_at'},
                 {
                     data: 'action',
                     name: 'action',
