@@ -13,22 +13,16 @@ class {{modelName}}Controller extends Controller
     public function index(Request $request)
     {
         if(session("success_message")){
-            toast('Success','success simpan');
+            Alert::success('Success', 'Data Berhasil Disimpan');
         }
         if ($request->ajax()) {
             $data = {{modelName}}::select('*');
 
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-
-                    $btn = "<a href='".url('{{modelNameSingular}}/show',$row->{{id}})."' class='show btn btn-info btn-sm'>View</a>
-                    <a href='".url('{{modelNameSingular}}/edit',$row->{{id}})."' class='edit btn btn-warning btn-sm'>Edit</a>
-                    <a href='".url('{{modelNameSingular}}/destroy',$row->{{id}})."' class='delete btn btn-danger btn-sm'>Delete</a>
-                   ";
-
-                    return $btn;
-                })
+                ->addColumn('action', function($row) {
+                                    return  view('{{modelNameSingular}}.action',compact('row'))->render();
+                                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -43,7 +37,7 @@ class {{modelName}}Controller extends Controller
     public function store(Request $request)
         {
             ${{modelNameSingular}} = {{modelName}}::create($request->all());
-            return redirect('{{modelNameSingular}}/index')->with('toast_success','message');
+            return redirect('{{modelNameSingular}}')->withSuccessMessage('success_message');
         }
 
     public function show($id)
@@ -75,6 +69,6 @@ class {{modelName}}Controller extends Controller
 
         {{modelName}}::destroy($id);
 
-        return back()->with('toast_success','message');
+        return back()->withSuccessMessage('success_message');
     }
 }

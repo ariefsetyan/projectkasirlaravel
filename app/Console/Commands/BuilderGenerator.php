@@ -59,6 +59,9 @@ class BuilderGenerator extends Command
             if ($type == "show.blade") {
                 return file_get_contents(resource_path("stubs/$type.stub"));
             }
+            if ($type == "action.blade") {
+                return file_get_contents(resource_path("stubs/$type.stub"));
+            }
         }
     }
 
@@ -180,6 +183,21 @@ class BuilderGenerator extends Command
         file_put_contents(resource_path("/views/" . strtolower($name) . "/show.blade.php"), $viewTemplate);
     }
 
+    protected function view_action($datas,$name){
+        $viewTemplateAction = str_replace(
+            [
+                '{{modelName}}',
+                '{{modelNamePlural}}',
+                '{{modelNameSingular}}',
+                '{{id}}',
+                '{{tbody}}'
+            ],
+            [$name, strtolower(str::plural($name)), strtolower($name), $datas[0]->COLUMN_NAME],
+            $this->getStub('action.blade')
+        );
+        file_put_contents(resource_path("/views/" . strtolower($name) . "/action.blade.php"), $viewTemplateAction);
+    }
+
     protected function view($name)
     {
         $datas = $this->getColumn($name);
@@ -216,6 +234,7 @@ class BuilderGenerator extends Command
 
         file_put_contents(resource_path("/views/" . strtolower($name) . "/index.blade.php"), $viewTemplate);
 
+        $this->view_action($datas,$name);
         $this->view_form($datas, $name);
 
         $this->view_edit($datas, $name);

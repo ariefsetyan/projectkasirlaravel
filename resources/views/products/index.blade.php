@@ -23,29 +23,29 @@
                 </div>
 
                 <div class="box-body">
-                    @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                    @endif
-                    <table id="products" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>id</th>
+                    <div class="container">
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                        @endif
+                        <table id="products" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>id</th>
 <th>name</th>
 <th>detail</th>
 <th>created_at</th>
 <th>updated_at</th>
-                                <th width="280px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                                    <th width="280px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
-
-
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
