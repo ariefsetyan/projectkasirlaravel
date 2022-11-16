@@ -20,15 +20,9 @@ class ProductsController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-
-                    $btn = "<a href='".url('products/show',$row->id)."' class='edit btn btn-info btn-sm'>View</a>
-                    <a href='".url('products/edit',$row->id)."' class='edit btn btn-warning btn-sm'>Edit</a>
-                    <a href='".url('products/destroy',$row->id)."' class='edit btn btn-danger btn-sm'>Delete</a>
-                   ";
-
-                    return $btn;
-                })
+                ->addColumn('action', function($row) {
+                                    return  view('products.action',compact('row'))->render();
+                                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -43,7 +37,7 @@ class ProductsController extends Controller
     public function store(Request $request)
         {
             $products = Products::create($request->all());
-            return redirect('products/index')->withSuccessMessage('success_message');
+            return redirect('products')->withSuccessMessage('success_message');
         }
 
     public function show($id)
@@ -66,7 +60,7 @@ class ProductsController extends Controller
 
         $products->update($request->all());
 
-        return redirect('products/index')->withSuccessMessage('success_message')->withSuccessMessage('success_message');
+        return redirect('products')->withSuccessMessage('success_message');
     }
 
     public function destroy(Request $request, $id)

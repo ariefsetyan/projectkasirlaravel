@@ -23,12 +23,12 @@
                 </div>
 
                 <div class="box-body">
+                <div class="container">
                     @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <div class="content">
                     <table id="products" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -41,9 +41,7 @@
 
                         </tbody>
                     </table>
-
-                    </div>
-
+                </div>
 
                 </div>
             </div>
