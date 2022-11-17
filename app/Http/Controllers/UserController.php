@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use Illuminate\Support\Arr;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -19,9 +20,27 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        if(session("success_message")){
+            Alert::success('Success', 'Data Berhasil Disimpan');
+        }
+        if ($request->ajax()) {
+            $data = User::select('*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('roles', function($row) {
+                    foreach ($row->getRoleNames() as $v){
+
+                        $val = "<label class='badge badge-success'>$v</label>";
+                    }
+                    return $val;
+                })
+                ->addColumn('action', function($user) {
+                    return  view('users.action',compact('user'))->render();
+                })
+                ->rawColumns(['roles','action'])
+                ->make(true);
+        }
+        return view('users.index');
     }
 
     /**
