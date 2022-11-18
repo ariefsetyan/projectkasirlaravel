@@ -6,7 +6,7 @@
             $menu .= '
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>'.$row->name_menu.'</span>
+                        <i class="'.(!empty($row->icon)?$row->icon:"fa fa-circle-o").'"></i> <span>'.$row->name_menu.'</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -14,7 +14,7 @@
                     <ul class="treeview-menu">';
             $get_menu = \App\Models\Menus::where('perent_menu_id','=',$row->id)->get();
             foreach ($get_menu as $key => $value){
-                $menu .= '<li><a href="'.route($value->route).'"><i class="fa fa-circle-o"></i> '.$value->name_menu.'</a></li>';
+                $menu .= '<li><a href="'.route($value->route).'"><i class="'.(!empty($value->icon)?$value->icon:"fa fa-circle-o").'"></i> '.$value->name_menu.'</a></li>';
             }
             $menu .= '</ul></li>';
         }else{

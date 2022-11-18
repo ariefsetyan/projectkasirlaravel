@@ -17,38 +17,28 @@
             {!! Form::open(['url' => 'menus/store','method' => 'post']) !!}
             <div class="box-body">
                 <div class="box-body">
+
                     <div class='form-group'>
-                        {!! Form::label('id'); !!}
-                        {{ Form::text('id', null, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
-                     </div>
-<div class='form-group'>
                         {!! Form::label('name_menu'); !!}
                         {{ Form::text('name_menu', null, array_merge(['class' => 'form-control','placeholder'=>'name_menu'])) }}
-                     </div>
-<div class='form-group'>
+                    </div>
+                    <div class='form-group'>
                         {!! Form::label('url'); !!}
-                        {{ Form::text('url', null, array_merge(['class' => 'form-control','placeholder'=>'url'])) }}
-                     </div>
-<div class='form-group'>
+                        {{ Form::text('url', null, array_merge(['class' => 'form-control','placeholder'=>'url Ex: menus'])) }}
+                    </div>
+                    <div class='form-group'>
                         {!! Form::label('route'); !!}
-                        {{ Form::text('route', null, array_merge(['class' => 'form-control','placeholder'=>'route'])) }}
+                        {{ Form::text('route', null, array_merge(['class' => 'form-control','placeholder'=>'route Ex: menus.index'])) }}
                      </div>
-<div class='form-group'>
+                    <div class='form-group'>
                         {!! Form::label('icon'); !!}
                         {{ Form::text('icon', null, array_merge(['class' => 'form-control','placeholder'=>'icon'])) }}
                      </div>
-<div class='form-group'>
+                    <div class='form-group'>
                         {!! Form::label('is_active'); !!}
-                        {{ Form::text('is_active', null, array_merge(['class' => 'form-control','placeholder'=>'is_active'])) }}
+                        {{ Form::select('is_active', ["t"=>"Aktif","f"=>"Tidak aktif"],null, array_merge(['class' => 'form-control','placeholder'=>'Pilih'])) }}
                      </div>
-<div class='form-group'>
-                        {!! Form::label('created_at'); !!}
-                        {{ Form::text('created_at', null, array_merge(['class' => 'form-control','placeholder'=>'created_at'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('updated_at'); !!}
-                        {{ Form::text('updated_at', null, array_merge(['class' => 'form-control','placeholder'=>'updated_at'])) }}
-                     </div>
+
                 </div>
             </div>
             <div class="box-footer">

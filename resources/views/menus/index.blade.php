@@ -33,7 +33,11 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>id</th> <th>name_menu</th> <th>url</th> <th>route</th> <th>icon</th> <th>is_active</th> <th>created_at</th> <th>updated_at</th>
+                                    <th>name_menu</th>
+                                    <th>url</th>
+                                    <th>route</th>
+                                    <th>icon</th>
+                                    <th>is_active</th>
                                     <th width="280px">Action</th>
                                 </tr>
                             </thead>
@@ -61,7 +65,11 @@
                     orderable: false,
                     searchable: false
                 },
-                {data:'id',name:'id'}, {data:'name_menu',name:'name_menu'}, {data:'url',name:'url'}, {data:'route',name:'route'}, {data:'icon',name:'icon'}, {data:'is_active',name:'is_active'}, {data:'created_at',name:'created_at'}, {data:'updated_at',name:'updated_at'},
+                {data:'name_menu',name:'name_menu'},
+                {data:'url',name:'url'},
+                {data:'route',name:'route'},
+                {data:'icon',name:'icon'},
+                {data:'is_active',name:'is_active'},
                 {
                     data: 'action',
                     name: 'action',
