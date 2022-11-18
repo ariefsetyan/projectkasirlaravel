@@ -19,6 +19,7 @@ class CreateMenuTables extends Migration
             $table->string('url');
             $table->string('route');
             $table->string('icon');
+            $table->string('perent_menu_id');
             $table->boolean('is_active');
             $table->timestamps();
         });
