@@ -22,13 +22,13 @@
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <table id="roles" class="table table-bordered table-striped">
+                    <table id="roles" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -53,6 +53,7 @@
 <script type="text/javascript">
     $(function() {
         var table = $('#roles').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: "{{ route('roles.index') }}",
