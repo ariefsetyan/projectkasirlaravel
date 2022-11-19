@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Menus;
+use App\Models\Permissions;
 use DataTables;
 Use Alert;
 
-class MenusController extends Controller
+class PermissionsController extends Controller
 {
     public function index(Request $request)
     {
@@ -16,58 +16,58 @@ class MenusController extends Controller
             Alert::success('Success', 'Data Berhasil Disimpan');
         }
         if ($request->ajax()) {
-            $data = Menus::select('*');
+            $data = Permissions::select('*');
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row) {
-                                    return  view('menus.action',compact('row'))->render();
+                                    return  view('permissions.action',compact('row'))->render();
                                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('Menus.index');
+        return view('Permissions.index');
        }
 
     public function create()
     {
-        return view('menus.form');
+        return view('permissions.form');
     }
 
     public function store(Request $request)
         {
-            $menus = Menus::create($request->all());
-            return redirect('menus')->withSuccessMessage('success_message');
+            $permissions = Permissions::create($request->all());
+            return redirect('permissions')->withSuccessMessage('success_message');
         }
 
     public function show($id)
     {
-        $menus = Menus::findOrFail($id);
+        $permissions = Permissions::findOrFail($id);
 
-        return view('Menus.show', compact('menus'));
+        return view('Permissions.show', compact('permissions'));
     }
 
     public function edit($id)
     {
-        $menus = Menus::findOrFail($id);
+        $permissions = Permissions::findOrFail($id);
 
-        return view('menus.edit', compact('menus'));
+        return view('permissions.edit', compact('permissions'));
     }
 
     public function update(Request $request, $id)
     {
-        $menus = Menus::find($id);
+        $permissions = Permissions::find($id);
 
-        $menus->update($request->all());
+        $permissions->update($request->all());
 
-        return redirect('menus')->with('success_message','Successfully!');
+        return redirect('permissions')->withSuccessMessage('success_message');
     }
 
     public function destroy(Request $request, $id)
     {
-        $menus = Menus::find($id);
+        $permissions = Permissions::find($id);
 
-        Menus::destroy($id);
+        Permissions::destroy($id);
 
         return back()->withSuccessMessage('success_message');
     }

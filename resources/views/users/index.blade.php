@@ -23,7 +23,6 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
@@ -60,15 +59,6 @@
     </div>
 
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-
-
-
 @endsection
 
 @push('scriptdown')
@@ -84,12 +74,9 @@
                         orderable: false,
                         searchable: false
                     },
-                    {data:'id',name:'id'},
                     {data:'name',name:'name'},
                     {data:'email',name:'email'},
                     {data:'roles',name:'roles'},
-                    // {data:'create_at',name:'create_at'},
-                    // {data:'updated_at',name:'updated_at'},
                     {
                         data: 'action',
                         name: 'action',

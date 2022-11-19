@@ -11,8 +11,8 @@ class BuilderController extends Controller
 {
     public function index()
     {
-        if (session('success_message')){
-            Alert::success('Success', 'Build Success');
+        if (session('toast_success')){
+            toast()->html('<h4>Success</h4>',"",'success');
         }
         $data = DB::table("information_schema.tables")->select('TABLE_NAME')->where('table_schema',env('DB_DATABASE'))->get();
         return view("builder.form",compact('data'));
@@ -21,6 +21,6 @@ class BuilderController extends Controller
     public function create(Request $request)
     {
         $resp = Artisan::call('crud:generator', ["name"=>ucfirst($request->table_name)]);
-        return redirect('builder')->withSuccessMessage('success_message');
+        return redirect('builder')->with('toast_success', 'success');
     }
 }

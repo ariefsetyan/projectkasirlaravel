@@ -51,3 +51,11 @@ Route::get('products', [App\Http\Controllers\ProductsController::class, 'index']
             Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
             Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
 
+Route::get('permissions', [App\Http\Controllers\PermissionsController::class, 'index'])->name('permissions.index');
+            Route::get('permissions/create', [App\Http\Controllers\PermissionsController::class, 'create'])->name('permissions.create');
+            Route::post('permissions/store', [App\Http\Controllers\PermissionsController::class, 'store'])->name('permissions.store');
+            Route::get('permissions/show/{id}', [App\Http\Controllers\PermissionsController::class, 'show'])->name('permissions.show');
+            Route::get('permissions/edit/{id}', [App\Http\Controllers\PermissionsController::class, 'edit'])->name('permissions.edit');
+            Route::post('permissions/update/{id}', [App\Http\Controllers\PermissionsController::class, 'update'])->name('permissionsupdate');
+            Route::get('permissions/destroy/{id}', [App\Http\Controllers\PermissionsController::class, 'destroy'])->name('permissions.delete');
+      

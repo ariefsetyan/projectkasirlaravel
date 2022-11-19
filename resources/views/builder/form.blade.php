@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Build</button>
             </div>
                 {!! Form::close() !!}
         </div>
@@ -36,4 +36,4 @@
     <script>
         $('.select2').select2()
     </script>
-@endpush;
+@endpush
