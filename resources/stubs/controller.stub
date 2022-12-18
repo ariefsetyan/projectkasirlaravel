@@ -35,10 +35,10 @@ class {{modelName}}Controller extends Controller
     }
 
     public function store(Request $request)
-        {
-            ${{modelNameSingular}} = {{modelName}}::create($request->all());
-            return redirect('{{modelNameSingular}}')->withSuccessMessage('success_message');
-        }
+    {
+        ${{modelNameSingular}} = {{modelName}}::create($request->all());
+        return redirect('{{modelNameSingular}}')->withSuccessMessage('success_message');
+    }
 
     public function show($id)
     {

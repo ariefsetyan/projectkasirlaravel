@@ -29,6 +29,10 @@
                         {{ Form::text('icon',$menus->icon, array_merge(['class' => 'form-control','placeholder'=>'icon'])) }}
                      </div>
                     <div class='form-group'>
+                        {!! Form::label('perent_menu_id'); !!}
+                        {{ Form::text('perent_menu_id', null, array_merge(['class' => 'form-control','placeholder'=>'Ex: 0'])) }}
+                    </div>
+                    <div class='form-group'>
                         {!! Form::label('is_active'); !!}
                         {{ Form::select('is_active', ["t"=>"Aktif","f"=>"Tidak aktif"],$menus->is_active,array_merge(['class' => 'form-control'])) }}
                      </div>

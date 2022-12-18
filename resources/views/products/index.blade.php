@@ -18,7 +18,9 @@
                         <h3 class="box-title">Daftar Products</h3>
                     </div>
                     <div class="pull-right">
+                        @can('products-create')
                         <a class="btn btn-success" href="{{ url('products/create') }}"> ADD</a>
+                        @endcan
                     </div>
                 </div>
 

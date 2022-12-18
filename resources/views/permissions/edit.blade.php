@@ -16,25 +16,14 @@
                 </div>
                 {!! Form::open(['url' => 'permissions/update/'.$permissions->id,'method' => 'post']) !!}
                 <div class="box-body">
+                    {{ Form::hidden('id',$permissions->id, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
                     <div class='form-group'>
-                        {!! Form::label('id'); !!}
-                        {{ Form::text('id',$permissions->id, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
-                     </div>
-<div class='form-group'>
                         {!! Form::label('name'); !!}
                         {{ Form::text('name',$permissions->name, array_merge(['class' => 'form-control','placeholder'=>'name'])) }}
                      </div>
-<div class='form-group'>
+                    <div class='form-group'>
                         {!! Form::label('guard_name'); !!}
                         {{ Form::text('guard_name',$permissions->guard_name, array_merge(['class' => 'form-control','placeholder'=>'guard_name'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('created_at'); !!}
-                        {{ Form::text('created_at',$permissions->created_at, array_merge(['class' => 'form-control','placeholder'=>'created_at'])) }}
-                     </div>
-<div class='form-group'>
-                        {!! Form::label('updated_at'); !!}
-                        {{ Form::text('updated_at',$permissions->updated_at, array_merge(['class' => 'form-control','placeholder'=>'updated_at'])) }}
                      </div>
                 </div>
 

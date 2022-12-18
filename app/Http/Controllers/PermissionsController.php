@@ -10,6 +10,14 @@ Use Alert;
 
 class PermissionsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:permission-list|permission-create|permission-edit|role-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:permission-create', ['only' => ['create','store']]);
+        $this->middleware('permission:permission-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         if(session("success_message")){
@@ -21,8 +29,8 @@ class PermissionsController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row) {
-                                    return  view('permissions.action',compact('row'))->render();
-                                })
+                        return  view('permissions.action',compact('row'))->render();
+                    })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -35,10 +43,25 @@ class PermissionsController extends Controller
     }
 
     public function store(Request $request)
-        {
-            $permissions = Permissions::create($request->all());
-            return redirect('permissions')->withSuccessMessage('success_message');
+    {
+        request()->validate([
+            'name' => 'required',
+        ],[
+            'name.required' => 'name not null'
+        ]);
+        $permissions = [
+            $request->name.'-list',
+            $request->name.'-create',
+            $request->name.'-edit',
+            $request->name.'-delete'
+        ];
+
+        foreach ($permissions as $permission){
+            $insert = Permissions::create(['name' => $permission,'guard_name'=>"web"]);
         }
+
+        return redirect('permissions')->withSuccessMessage('success_message');
+    }
 
     public function show($id)
     {

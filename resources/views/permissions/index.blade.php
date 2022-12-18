@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@push('styles')
-
-@endpush
-@push('script')
-
-@endpush
 
 @section('content')
 
@@ -18,7 +12,9 @@
                         <h3 class="box-title">Daftar Permissions</h3>
                     </div>
                     <div class="pull-right">
+                        @can('permission-create')
                         <a class="btn btn-success" href="{{ url('permissions/create') }}"> ADD</a>
+                        @endcan
                     </div>
                 </div>
 
@@ -33,11 +29,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>id</th>
-<th>name</th>
-<th>guard_name</th>
-<th>created_at</th>
-<th>updated_at</th>
+                                    <th>name</th>
+                                    <th>guard_name</th>
                                     <th width="280px">Action</th>
                                 </tr>
                             </thead>
@@ -65,11 +58,8 @@
                     orderable: false,
                     searchable: false
                 },
-                {data:'id',name:'id'},
-{data:'name',name:'name'},
-{data:'guard_name',name:'guard_name'},
-{data:'created_at',name:'created_at'},
-{data:'updated_at',name:'updated_at'},
+                {data:'name',name:'name'},
+                {data:'guard_name',name:'guard_name'},
                 {
                     data: 'action',
                     name: 'action',

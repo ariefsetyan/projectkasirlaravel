@@ -10,6 +10,14 @@ Use Alert;
 
 class ProductsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:products-list|products-create|products-edit|role-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:products-create', ['only' => ['create','store']]);
+        $this->middleware('permission:products-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:products-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         if(session("success_message")){

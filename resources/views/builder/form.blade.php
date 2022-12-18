@@ -11,7 +11,7 @@
 
                 </div>
             </div>
-            {!! Form::open(['url' => 'builder/create','method' => 'post']) !!}
+            {!! Form::open(['url' => 'builder/create','method' => 'post','id'=>'form_builder']) !!}
             <div class="box-body">
                 <div class="box-body">
                     <div class="form-group">
@@ -26,14 +26,77 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Build</button>
+                <button type="submit" class="btn btn-primary" id="build">Build</button>
             </div>
-                {!! Form::close() !!}
+            {!! Form::close() !!}
         </div>
     </section>
 @endsection
 @push('scriptdown')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
+
         $('.select2').select2()
+
+        $("#builder").click(function (event) {
+            let url = $('#form_builder').attr('action')
+            let method = $('#form_builder').attr('method')
+            let input = $("#form_builder").serialize();
+            // console.log(url)
+
+            function genetare() {
+                // alert(url)
+                $("form").submit();
+                // form.submit();
+                // $.ajax({
+                //     url:url,
+                //     type:method,
+                //     data:input,
+                //     success:function (data) {
+                //         // location.reload();
+                //     }
+                // })
+            }
+
+
+            // $.ajaxSetup({
+            //
+            //     headers: {
+            //
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //
+            //     }
+            //
+            // });
+
+            $.ajax({
+                url:"{!! route('builder.cek') !!}",
+                type:'POST',
+                data:input,
+                success:function (data) {
+                    console.log(data)
+                    if (data != 'tidak ada'){
+                        event.preventDefault();
+                        swal({
+                            title: `Apakah anda yakin untuk di build ulang`,
+                            text: "Jika di build ulang perubahan pada controller, view, model akan di hapus",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                            .then((willBuil) => {
+                                if (willBuil) {
+                                    $("form").submit();
+                                    // genetare()
+                                    // form.submit();
+                                }
+                            });
+                    }else{
+                        $("form").submit();
+                        // genetare()
+                    }
+                }
+            })
+        })
     </script>
 @endpush

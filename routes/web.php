@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/builder', [App\Http\Controllers\BuilderController::class, 'index'])->name('builder.index');
+Route::post('/builder/cek', [App\Http\Controllers\BuilderController::class, 'cek'])->name('builder.cek');
 Route::post('/builder/create', [App\Http\Controllers\BuilderController::class, 'create'])->name('builder.create');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -41,21 +42,24 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('menus/edit/{id}', [App\Http\Controllers\MenusController::class, 'edit'])->name('menus.edit');
     Route::post('menus/update/{id}', [App\Http\Controllers\MenusController::class, 'update'])->name('menusupdate');
     Route::get('menus/destroy/{id}', [App\Http\Controllers\MenusController::class, 'destroy'])->name('menus.delete');
+
+    Route::get('permissions', [App\Http\Controllers\PermissionsController::class, 'index'])->name('permissions.index');
+    Route::get('permissions/create', [App\Http\Controllers\PermissionsController::class, 'create'])->name('permissions.create');
+    Route::post('permissions/store', [App\Http\Controllers\PermissionsController::class, 'store'])->name('permissions.store');
+    Route::get('permissions/show/{id}', [App\Http\Controllers\PermissionsController::class, 'show'])->name('permissions.show');
+    Route::get('permissions/edit/{id}', [App\Http\Controllers\PermissionsController::class, 'edit'])->name('permissions.edit');
+    Route::post('permissions/update/{id}', [App\Http\Controllers\PermissionsController::class, 'update'])->name('permissionsupdate');
+    Route::get('permissions/destroy/{id}', [App\Http\Controllers\PermissionsController::class, 'destroy'])->name('permissions.delete');
+
+    Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
+    Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
+    Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+    Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+    Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+    Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
+    Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
 });
 
-Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
-            Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
-            Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
-            Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
-            Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
-            Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
-            Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
 
-Route::get('permissions', [App\Http\Controllers\PermissionsController::class, 'index'])->name('permissions.index');
-            Route::get('permissions/create', [App\Http\Controllers\PermissionsController::class, 'create'])->name('permissions.create');
-            Route::post('permissions/store', [App\Http\Controllers\PermissionsController::class, 'store'])->name('permissions.store');
-            Route::get('permissions/show/{id}', [App\Http\Controllers\PermissionsController::class, 'show'])->name('permissions.show');
-            Route::get('permissions/edit/{id}', [App\Http\Controllers\PermissionsController::class, 'edit'])->name('permissions.edit');
-            Route::post('permissions/update/{id}', [App\Http\Controllers\PermissionsController::class, 'update'])->name('permissionsupdate');
-            Route::get('permissions/destroy/{id}', [App\Http\Controllers\PermissionsController::class, 'destroy'])->name('permissions.delete');
-      
+
+
