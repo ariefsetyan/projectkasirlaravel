@@ -51,15 +51,44 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('permissions/update/{id}', [App\Http\Controllers\PermissionsController::class, 'update'])->name('permissionsupdate');
     Route::get('permissions/destroy/{id}', [App\Http\Controllers\PermissionsController::class, 'destroy'])->name('permissions.delete');
 
-    Route::get('products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
-    Route::get('products/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
-    Route::post('products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
-    Route::get('products/show/{id}', [App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
-    Route::get('products/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
-    Route::post('products/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('productsupdate');
-    Route::get('products/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.delete');
 });
 
 
 
 
+Route::get('cat_item', [App\Http\Controllers\Cat_itemController::class, 'index'])->name('cat_item.index');
+            Route::get('cat_item/create', [App\Http\Controllers\Cat_itemController::class, 'create'])->name('cat_item.create');
+            Route::post('cat_item/store', [App\Http\Controllers\Cat_itemController::class, 'store'])->name('cat_item.store');
+            Route::get('cat_item/show/{id}', [App\Http\Controllers\Cat_itemController::class, 'show'])->name('cat_item.show');
+            Route::get('cat_item/edit/{id}', [App\Http\Controllers\Cat_itemController::class, 'edit'])->name('cat_item.edit');
+            Route::post('cat_item/update/{id}', [App\Http\Controllers\Cat_itemController::class, 'update'])->name('cat_itemupdate');
+            Route::get('cat_item/destroy/{id}', [App\Http\Controllers\Cat_itemController::class, 'destroy'])->name('cat_item.delete');
+      Route::get('kendaraan', [App\Http\Controllers\KendaraanController::class, 'index'])->name('kendaraan.index');
+            Route::get('kendaraan/create', [App\Http\Controllers\KendaraanController::class, 'create'])->name('kendaraan.create');
+            Route::post('kendaraan/store', [App\Http\Controllers\KendaraanController::class, 'store'])->name('kendaraan.store');
+            Route::get('kendaraan/show/{id}', [App\Http\Controllers\KendaraanController::class, 'show'])->name('kendaraan.show');
+            Route::get('kendaraan/edit/{id}', [App\Http\Controllers\KendaraanController::class, 'edit'])->name('kendaraan.edit');
+            Route::post('kendaraan/update/{id}', [App\Http\Controllers\KendaraanController::class, 'update'])->name('kendaraanupdate');
+            Route::get('kendaraan/destroy/{id}', [App\Http\Controllers\KendaraanController::class, 'destroy'])->name('kendaraan.delete');
+      Route::get('customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
+            Route::get('customer/create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
+            Route::post('customer/store', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
+            Route::get('customer/show/{id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
+            Route::get('customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
+            Route::post('customer/update/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customerupdate');
+            Route::get('customer/destroy/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
+      Route::get('kendaraan', [App\Http\Controllers\KendaraanController::class, 'index'])->name('kendaraan.index');
+            Route::get('kendaraan/create', [App\Http\Controllers\KendaraanController::class, 'create'])->name('kendaraan.create');
+            Route::post('kendaraan/store', [App\Http\Controllers\KendaraanController::class, 'store'])->name('kendaraan.store');
+            Route::get('kendaraan/show/{id}', [App\Http\Controllers\KendaraanController::class, 'show'])->name('kendaraan.show');
+            Route::get('kendaraan/edit/{id}', [App\Http\Controllers\KendaraanController::class, 'edit'])->name('kendaraan.edit');
+            Route::post('kendaraan/update/{id}', [App\Http\Controllers\KendaraanController::class, 'update'])->name('kendaraanupdate');
+            Route::get('kendaraan/destroy/{id}', [App\Http\Controllers\KendaraanController::class, 'destroy'])->name('kendaraan.delete');
+      Route::get('customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
+            Route::get('customer/create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
+            Route::post('customer/store', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
+            Route::get('customer/show/{id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
+            Route::get('customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
+            Route::post('customer/update/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customerupdate');
+            Route::get('customer/destroy/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
+      

@@ -15,12 +15,10 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <h3 class="box-title">Daftar Products</h3>
+                        <h3 class="box-title">Daftar Customer</h3>
                     </div>
                     <div class="pull-right">
-                        @can('products-create')
-                        <a class="btn btn-success" href="{{ url('products/create') }}"> ADD</a>
-                        @endcan
+                        <a class="btn btn-success" href="{{ url('customer/create') }}"> ADD</a>
                     </div>
                 </div>
 
@@ -31,13 +29,15 @@
                             <p>{{ $message }}</p>
                         </div>
                         @endif
-                        <table id="products" class="table table-bordered table-striped">
+                        <table id="customer" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>id</th>
-<th>name</th>
-<th>detail</th>
+                                    <th>id_customer</th>
+<th>nama_customer</th>
+<th>telp</th>
+<th>alamat</th>
+<th>status</th>
 <th>created_at</th>
 <th>updated_at</th>
                                     <th width="280px">Action</th>
@@ -57,19 +57,21 @@
 @push('scriptdown')
 <script type="text/javascript">
     $(function() {
-        var table = $('#products').DataTable({
+        var table = $('#customer').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('products.index') }}",
+            ajax: "{{ route('customer.index') }}",
             columns: [
                 {
                     "data": 'DT_RowIndex',
                     orderable: false,
                     searchable: false
                 },
-                {data:'id',name:'id'},
-{data:'name',name:'name'},
-{data:'detail',name:'detail'},
+                {data:'id_customer',name:'id_customer'},
+{data:'nama_customer',name:'nama_customer'},
+{data:'telp',name:'telp'},
+{data:'alamat',name:'alamat'},
+{data:'status',name:'status'},
 {data:'created_at',name:'created_at'},
 {data:'updated_at',name:'updated_at'},
                 {
@@ -88,7 +90,7 @@
             let id = $(this).val();
             $.ajax(
                 {
-                    url: "{{ url('products/destroy') }}/"+id,
+                    url: "{{ url('customer/destroy') }}/"+id,
                     type: 'GET',
                     success: function (){
                         location.reload();

@@ -10,24 +10,32 @@
 
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">FORM products</h3>
+                <h3 class="box-title">FORM customers</h3>
                 <div class="box-tools pull-right">
                 </div>
             </div>
-            {!! Form::open(['url' => 'products/store','method' => 'post']) !!}
+            {!! Form::open(['url' => 'customer/store','method' => 'post']) !!}
             <div class="box-body">
                 <div class="box-body">
                     <div class='form-group'>
-                        {!! Form::label('id'); !!}
-                        {{ Form::text('id', null, array_merge(['class' => 'form-control','placeholder'=>'id'])) }}
+                        {!! Form::label('id_customer'); !!}
+                        {{ Form::text('id_customer', null, array_merge(['class' => 'form-control','placeholder'=>'id_customer'])) }}
                      </div>
 <div class='form-group'>
-                        {!! Form::label('name'); !!}
-                        {{ Form::text('name', null, array_merge(['class' => 'form-control','placeholder'=>'name'])) }}
+                        {!! Form::label('nama_customer'); !!}
+                        {{ Form::text('nama_customer', null, array_merge(['class' => 'form-control','placeholder'=>'nama_customer'])) }}
                      </div>
 <div class='form-group'>
-                        {!! Form::label('detail'); !!}
-                        {{ Form::text('detail', null, array_merge(['class' => 'form-control','placeholder'=>'detail'])) }}
+                        {!! Form::label('telp'); !!}
+                        {{ Form::text('telp', null, array_merge(['class' => 'form-control','placeholder'=>'telp'])) }}
+                     </div>
+<div class='form-group'>
+                        {!! Form::label('alamat'); !!}
+                        {{ Form::text('alamat', null, array_merge(['class' => 'form-control','placeholder'=>'alamat'])) }}
+                     </div>
+<div class='form-group'>
+                        {!! Form::label('status'); !!}
+                        {{ Form::text('status', null, array_merge(['class' => 'form-control','placeholder'=>'status'])) }}
                      </div>
 <div class='form-group'>
                         {!! Form::label('created_at'); !!}
@@ -40,7 +48,7 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="{{route('products.index')}}" type="button" class="btn btn-default">Cencel</a>
+                <a href="{{route('customer.index')}}" type="button" class="btn btn-default">Cencel</a>
                 <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                 {!! Form::close() !!}
             </div>
