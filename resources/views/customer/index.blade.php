@@ -33,13 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>id_customer</th>
-<th>nama_customer</th>
-<th>telp</th>
-<th>alamat</th>
-<th>status</th>
-<th>created_at</th>
-<th>updated_at</th>
+                                    <th>nama_customer</th>
+                                    <th>telp</th>
+                                    <th>alamat</th>
+                                    <th>status</th>
                                     <th width="280px">Action</th>
                                 </tr>
                             </thead>
@@ -58,6 +55,7 @@
 <script type="text/javascript">
     $(function() {
         var table = $('#customer').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: "{{ route('customer.index') }}",
@@ -67,13 +65,16 @@
                     orderable: false,
                     searchable: false
                 },
-                {data:'id_customer',name:'id_customer'},
-{data:'nama_customer',name:'nama_customer'},
-{data:'telp',name:'telp'},
-{data:'alamat',name:'alamat'},
-{data:'status',name:'status'},
-{data:'created_at',name:'created_at'},
-{data:'updated_at',name:'updated_at'},
+                {data:'nama_customer',name:'nama_customer'},
+                {data:'telp',name:'telp'},
+                {data:'alamat',name:'alamat'},
+                {data:'status',name:'status', render:function ($data){
+                    if ($data == 1){
+                        return '<span class="badge bg-green">Aktif</span>'
+                    }else{
+                        return '<span class="badge bg-red">Tidak Aktif</span>'
+                    }
+                    }},
                 {
                     data: 'action',
                     name: 'action',

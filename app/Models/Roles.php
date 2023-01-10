@@ -10,10 +10,10 @@ class Roles extends Model
     use HasFactory;
     protected $table = 'roles';
     protected $fillable = [
-            'id',
-'name',
-'guard_name',
-'created_at',
-'updated_at'
-        ];
+        'id',
+        'name',
+        'guard_name',
+        'created_at',
+        'updated_at'
+    ];
 }

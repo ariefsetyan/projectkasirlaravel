@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kendaraan;
+use App\Models\Menus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
@@ -36,7 +38,26 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $customer = Customer::create($request->all());
+        $customer = Customer::create([
+            'nama_customer'=>$request->nama_customer,
+            'telp'=>$request->telp,
+            'alamat'=>$request->alamat,
+            'status'=>$request->status,
+        ]);
+
+        if (!empty($request->kendaraan)){
+            foreach ($request->kendaraan as $row){
+                $kendaran = Kendaraan::create([
+                    'nopol'=>$row['nopol'],
+                    'nama_kendaran'=>$row['jendaraan'],
+                    'tipe_kendaran'=>$row['tipe'],
+                    'jenis_kendaran'=>$row['jenis'],
+                    'id_customer'=>$customer->id_customer
+                ]);
+
+            }
+
+        }
         return redirect('customer')->withSuccessMessage('success_message');
     }
 
@@ -49,16 +70,31 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        $customer = Customer::findOrFail($id);
 
+        $customer = Customer::findOrFail($id);
         return view('customer.edit', compact('customer'));
     }
 
     public function update(Request $request, $id)
     {
         $customer = Customer::find($id);
+        $customer->update([
+            'nama_customer'=>$request->nama_customer,
+            'telp'=>$request->telp,
+            'alamat'=>$request->alamat,
+            'status'=>$request->status,
+        ]);
 
-        $customer->update($request->all());
+        $kendaraan = Kendaraan::where('id_customer',$id)->delete();
+        foreach ($request->kendaraan as $row){
+            $kendaran = Kendaraan::create([
+                'nopol'=>$row['nopol'],
+                'nama_kendaran'=>$row['jendaraan'],
+                'tipe_kendaran'=>$row['tipe'],
+                'jenis_kendaran'=>$row['jenis'],
+                'id_customer'=>$id
+            ]);
+        }
 
         return redirect('customer')->withSuccessMessage('success_message');
     }

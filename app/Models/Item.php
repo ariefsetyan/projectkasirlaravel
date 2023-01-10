@@ -5,14 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permissions extends Model
+class Item extends Model
 {
     use HasFactory;
-    protected $table = 'permissions';
+    protected $table = 'item';
+    protected $primaryKey='id_item';
     protected $fillable = [
-        'id',
-        'name',
-        'guard_name',
+        'id_item',
+        'kode_item',
+        'nama_item',
+        'id_supplier',
+        'id_cat_item',
+        'status',
         'created_at',
         'updated_at'
     ];

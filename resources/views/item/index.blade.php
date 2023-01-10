@@ -15,10 +15,10 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <h3 class="box-title">Daftar Kendaraan</h3>
+                        <h3 class="box-title">Daftar Item</h3>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ url('kendaraan/create') }}"> ADD</a>
+                        <a class="btn btn-success" href="{{ url('item/create') }}"> ADD</a>
                     </div>
                 </div>
 
@@ -29,15 +29,15 @@
                             <p>{{ $message }}</p>
                         </div>
                         @endif
-                        <table id="kendaraan" class="table table-bordered table-striped">
+                        <table id="item" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>nopol</th>
-                                    <th>nama_kendaran</th>
-                                    <th>tipe_kendaran</th>
-                                    <th>jenis_kendaran</th>
-                                    <th>id_customer</th>
+                                    <th>kode_item</th>
+                                    <th>nama_item</th>
+                                    <th>id_supplier</th>
+                                    <th>id_cat_item</th>
+                                    <th>status</th>
                                     <th width="280px">Action</th>
                                 </tr>
                             </thead>
@@ -55,21 +55,21 @@
 @push('scriptdown')
 <script type="text/javascript">
     $(function() {
-        var table = $('#kendaraan').DataTable({
+        var table = $('#item').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('kendaraan.index') }}",
+            ajax: "{{ route('item.index') }}",
             columns: [
                 {
                     "data": 'DT_RowIndex',
                     orderable: false,
                     searchable: false
                 },
-                {data:'nopol',name:'nopol'},
-                {data:'nama_kendaran',name:'nama_kendaran'},
-                {data:'tipe_kendaran',name:'tipe_kendaran'},
-                {data:'jenis_kendaran',name:'jenis_kendaran'},
-                {data:'id_customer',name:'id_customer'},
+                {data:'kode_item',name:'kode_item'},
+                {data:'nama_item',name:'nama_item'},
+                {data:'id_supplier',name:'id_supplier'},
+                {data:'id_cat_item',name:'id_cat_item'},
+                {data:'status',name:'status'},
                 {
                     data: 'action',
                     name: 'action',
@@ -86,7 +86,7 @@
             let id = $(this).val();
             $.ajax(
                 {
-                    url: "{{ url('kendaraan/destroy') }}/"+id,
+                    url: "{{ url('item/destroy') }}/"+id,
                     type: 'GET',
                     success: function (){
                         location.reload();

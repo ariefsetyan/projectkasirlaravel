@@ -15,43 +15,47 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">FORM Kendaraan</h3>
+                            <h3 class="box-title">FORM Supplier</h3>
                         </div>
                         <div class="box-tools pull-right">
 
                         </div>
 
                         <div class='form-group'>
-                            <strong>id_kendaraan</strong>
-                            {!!$kendaraan->id_kendaraan!!}
+                            <strong>id_supplier</strong>
+                            {!!$supplier->id_supplier!!}
                         </div>
 <div class='form-group'>
-                            <strong>nopol</strong>
-                            {!!$kendaraan->nopol!!}
+                            <strong>kode_supplier</strong>
+                            {!!$supplier->kode_supplier!!}
                         </div>
 <div class='form-group'>
-                            <strong>nama_kendaran</strong>
-                            {!!$kendaraan->nama_kendaran!!}
+                            <strong>nama_supplier</strong>
+                            {!!$supplier->nama_supplier!!}
                         </div>
 <div class='form-group'>
-                            <strong>tipe_kendaran</strong>
-                            {!!$kendaraan->tipe_kendaran!!}
+                            <strong>telp</strong>
+                            {!!$supplier->telp!!}
                         </div>
 <div class='form-group'>
-                            <strong>jenis_kendaran</strong>
-                            {!!$kendaraan->jenis_kendaran!!}
+                            <strong>email</strong>
+                            {!!$supplier->email!!}
                         </div>
 <div class='form-group'>
-                            <strong>id_customer</strong>
-                            {!!$kendaraan->id_customer!!}
+                            <strong>alamat</strong>
+                            {!!$supplier->alamat!!}
+                        </div>
+<div class='form-group'>
+                            <strong>status</strong>
+                            {!!$supplier->status!!}
                         </div>
 <div class='form-group'>
                             <strong>created_at</strong>
-                            {!!$kendaraan->created_at!!}
+                            {!!$supplier->created_at!!}
                         </div>
 <div class='form-group'>
                             <strong>updated_at</strong>
-                            {!!$kendaraan->updated_at!!}
+                            {!!$supplier->updated_at!!}
                         </div>
 
                         <div class="box-footer">

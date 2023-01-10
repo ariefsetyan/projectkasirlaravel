@@ -37,6 +37,10 @@
                         {{ Form::text('jenis_kendaran',$kendaraan->jenis_kendaran, array_merge(['class' => 'form-control','placeholder'=>'jenis_kendaran'])) }}
                      </div>
 <div class='form-group'>
+                        {!! Form::label('id_customer'); !!}
+                        {{ Form::text('id_customer',$kendaraan->id_customer, array_merge(['class' => 'form-control','placeholder'=>'id_customer'])) }}
+                     </div>
+<div class='form-group'>
                         {!! Form::label('created_at'); !!}
                         {{ Form::text('created_at',$kendaraan->created_at, array_merge(['class' => 'form-control','placeholder'=>'created_at'])) }}
                      </div>

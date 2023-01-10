@@ -5,23 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Supplier extends Model
 {
     use HasFactory;
-    protected $table = 'customer';
-    protected $primaryKey='id_customer';
+    protected $table = 'supplier';
+    protected $primaryKey='id_supplier';
     protected $fillable = [
-        'id_customer',
-        'nama_customer',
+        'id_supplier',
+        'kode_supplier',
+        'nama_supplier',
         'telp',
+        'email',
         'alamat',
         'status',
         'created_at',
         'updated_at'
     ];
-
-    public function kendaraan()
-    {
-        return $this->hasMany(Kendaraan::class,'id_customer','id_customer');
-    }
 }

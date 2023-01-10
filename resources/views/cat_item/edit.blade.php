@@ -16,7 +16,7 @@
                 </div>
                 {!! Form::open(['url' => 'cat_item/update/'.$cat_item->id_cat_item,'method' => 'post']) !!}
                 <div class="box-body">
-
+                    {{ Form::hidden('id_customer',$customer->id_cat_item, array_merge(['class' => 'form-control','placeholder'=>'id_cat_item'])) }}
                     <div class='form-group'>
                         {!! Form::label('nama kategori'); !!}
                         {{ Form::text('cat_name',$cat_item->cat_name, array_merge(['class' => 'form-control','placeholder'=>'nama_kategoti'])) }}

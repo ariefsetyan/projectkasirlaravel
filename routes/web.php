@@ -91,4 +91,25 @@ Route::get('cat_item', [App\Http\Controllers\Cat_itemController::class, 'index']
             Route::get('customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
             Route::post('customer/update/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customerupdate');
             Route::get('customer/destroy/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
+      Route::get('kendaraan', [App\Http\Controllers\KendaraanController::class, 'index'])->name('kendaraan.index');
+            Route::get('kendaraan/create', [App\Http\Controllers\KendaraanController::class, 'create'])->name('kendaraan.create');
+            Route::post('kendaraan/store', [App\Http\Controllers\KendaraanController::class, 'store'])->name('kendaraan.store');
+            Route::get('kendaraan/show/{id}', [App\Http\Controllers\KendaraanController::class, 'show'])->name('kendaraan.show');
+            Route::get('kendaraan/edit/{id}', [App\Http\Controllers\KendaraanController::class, 'edit'])->name('kendaraan.edit');
+            Route::post('kendaraan/update/{id}', [App\Http\Controllers\KendaraanController::class, 'update'])->name('kendaraanupdate');
+            Route::get('kendaraan/destroy/{id}', [App\Http\Controllers\KendaraanController::class, 'destroy'])->name('kendaraan.delete');
+      Route::get('supplier', [App\Http\Controllers\SupplierController::class, 'index'])->name('supplier.index');
+            Route::get('supplier/create', [App\Http\Controllers\SupplierController::class, 'create'])->name('supplier.create');
+            Route::post('supplier/store', [App\Http\Controllers\SupplierController::class, 'store'])->name('supplier.store');
+            Route::get('supplier/show/{id}', [App\Http\Controllers\SupplierController::class, 'show'])->name('supplier.show');
+            Route::get('supplier/edit/{id}', [App\Http\Controllers\SupplierController::class, 'edit'])->name('supplier.edit');
+            Route::post('supplier/update/{id}', [App\Http\Controllers\SupplierController::class, 'update'])->name('supplierupdate');
+            Route::get('supplier/destroy/{id}', [App\Http\Controllers\SupplierController::class, 'destroy'])->name('supplier.delete');
+      Route::get('item', [App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
+            Route::get('item/create', [App\Http\Controllers\ItemController::class, 'create'])->name('item.create');
+            Route::post('item/store', [App\Http\Controllers\ItemController::class, 'store'])->name('item.store');
+            Route::get('item/show/{id}', [App\Http\Controllers\ItemController::class, 'show'])->name('item.show');
+            Route::get('item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit'])->name('item.edit');
+            Route::post('item/update/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('itemupdate');
+            Route::get('item/destroy/{id}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.delete');
       
